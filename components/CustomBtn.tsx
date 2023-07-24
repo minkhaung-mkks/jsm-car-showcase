@@ -1,6 +1,5 @@
-'use client'
-import { CustomBtnProps } from '@/types'
-import React from 'react'
+"use client";
+import { CustomBtnProps } from '@types'
 
 const CustomBtn = ({title,containerStyles, handleClick}: CustomBtnProps) => {
     return (
