@@ -1,3 +1,4 @@
-import Hero from "./hero"
+import Hero from "./Hero"
+import CustomBtn from "./CustomBtn"
 
-export { Hero }
+export { Hero, CustomBtn }
