@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import {CustomFilters, Hero, Searchbar} from '@components'
+import {CarCard, CustomFilters, Hero, Searchbar} from '@components'
 import {fetchCars} from '@utlis' 
 
 export default async function Home() {
@@ -27,7 +27,9 @@ export default async function Home() {
           {!isDataEmpty ? (
             <section>
               <div className="home__cars-wrapper">
-                {}
+                {allCars?.map((car) => 
+                  <CarCard key={car.name} car={car} />
+                )}
               </div>
             </section>
           )
