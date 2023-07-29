@@ -14,7 +14,7 @@ const CustomBtn = ({title,containerStyles, handleClick,btnType,rightIcon, textSt
                 {title}
             </span>
             {rightIcon && (
-                <div>
+                <div className='relative w-6 h-6'>
                     <Image
                         src={rightIcon}
                         alt='icon'
