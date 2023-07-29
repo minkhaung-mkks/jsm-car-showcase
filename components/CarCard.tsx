@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { CarProps } from '@types'
 import { calculateCarRent } from '@utlis'
 import {useState} from 'react'
@@ -27,6 +28,44 @@ const CarCard = ({car}:CarCardProps) => {
                     /day
                 </span>
             </p>
+            <div className="relative w-full h-40 my-3 object-contain">
+                <Image 
+                src='/hero.png' 
+                alt='car model' 
+                fill priority 
+                className='object-contain'/>
+            </div>
+            <div className="relative w-full mt-2 flex">
+                <div className="flex group-hover:invisible w-full justify-between text-gray">
+                    <div className="flex flex-col justify-center items-center gap-2">
+                        <Image 
+                            src='/steering-wheel.svg'
+                            alt='steering wheel icon'
+                        />
+                        <p className='text-[14px]'>
+                            {transmission === 'a' ? 'Automatic' : 'Manual'}
+                        </p>
+                    </div>
+                    <div className="flex flex-col justify-center items-center gap-2">
+                        <Image 
+                            src='/tire.svg'
+                            alt='Tire icon'
+                        />
+                        <p className='text-[14px]'>
+                            {drive.toUpperCase()}
+                        </p>
+                    </div>
+                    <div className="flex flex-col justify-center items-center gap-2">
+                        <Image 
+                            src='/gas.svg'
+                            alt='Gas tank icon'
+                        />
+                        <p className='text-[14px]'>
+                            {city_mpg} MPG
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
