@@ -40,7 +40,7 @@ const CarDetails = ({isOpen,closeModal: closeModal,car}: CarDetailsProps)  => {
                             <Dialog.Panel
                                 className='relative w-full max-w-lg max-h-[90vh] 
                                 overflow-y-auto transfrom rounded-2xl 
-                                bg-white text-left shadow-xsl transition-all 
+                                bg-white text-left shadow-xl transition-all 
                                 flex flex-col gap-5'
                             >
                                 <button
@@ -56,16 +56,16 @@ const CarDetails = ({isOpen,closeModal: closeModal,car}: CarDetailsProps)  => {
                                         className='object-contain'
                                     />
                                 </button>
-                                <div className="flex-1 flex flex-col gap-3">
-                                    <div className="relative w-full h-40 bg-pattern bg-cover bg-center rounded-lg">
+                                <div className="flex-1 flex flex-col gap-3 ">
+                                    <div className="relative w-full h-48 bg-pattern bg-cover bg-center rounded-t-lg py-10">
                                         <Image 
                                             src='/hero.png' 
                                             alt='car model' 
                                             fill priority 
-                                            className='object-contain'
+                                            className='object-contain py-3 mt-1'
                                         />
                                     </div>
-                                    <div className="flex gap-3">
+                                    <div className="flex gap-3 px-2 py-1">
                                         <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
                                             <Image 
                                                 src='/hero.png' 
@@ -92,8 +92,20 @@ const CarDetails = ({isOpen,closeModal: closeModal,car}: CarDetailsProps)  => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex-1 flex flex-col gap-2">
-
+                                <div className="flex-1 flex flex-col gap-2 px-3 pb-5">
+                                    <h2 className="font-semibold text-xl capitalize">
+                                        {car.make}&nbsp;{car.model}
+                                    </h2>
+                                    <div className="mt-3 flex flex-wrap gap-2">
+                                        {Object.entries(car).map(([key,value])=>(
+                                            <div className="flex justify-between gap-5 w-full text-right"
+                                                key={key}
+                                            >
+                                                <h4 className='text-gray-500 capitalize'>{key.split("_").join(" ")}</h4>
+                                                <p className='font-semibold text-black-100'>{value}</p>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </Dialog.Panel> 
                         </Transition.Child>
