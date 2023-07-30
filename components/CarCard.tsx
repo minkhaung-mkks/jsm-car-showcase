@@ -4,6 +4,7 @@ import { CarProps } from '@types'
 import { calculateCarRent } from '@utlis'
 import {useState} from 'react'
 import CustomBtn from './CustomBtn'
+import CarDetails from './CarDetails'
 interface CarCardProps{
     car: CarProps
 }
@@ -80,6 +81,13 @@ const CarCard = ({car}:CarCardProps) => {
                         />
                 </div>
             </div>
+            {isOpen && (
+                <CarDetails
+                    isOpen={isOpen}
+                    closeModal={()=>setIsOpen(false)}
+                    car={car}
+                />
+            )}
         </div>
     )
 }
