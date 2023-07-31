@@ -3,10 +3,15 @@ import Image from 'next/image'
 import {CarCard, CustomFilters, Hero, Searchbar} from '@components'
 import {fetchCars} from '@utlis' 
 
-export default async function Home() {
-  const allCars = await fetchCars();
+export default async function Home({searchParams}: {searchParams: {manufacturer: string; year: number; fuel: string; limit: number; model: string;}}) {
+  const allCars = await fetchCars({
+      manufacturer: searchParams.manufacturer || '',
+      year: searchParams.year || 2022,
+      fuel: searchParams.fuel || '',
+      limit: searchParams.limit || 20,
+      model: searchParams.model || '',
+  });
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
-  console.log(allCars)
   return (
     <main className="overflow-hidden">
       <Hero/>
