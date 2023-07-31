@@ -41,7 +41,7 @@ const SearchManufacturer = ({manufacturer, setManufacturer} : SearchManufacturer
               leaveTo='opacity-0'
               afterLeave={()=>setQuery('')}
             >
-                <Combobox.Options>
+                <Combobox.Options className={'h-[500px] overflow-auto'}>
                   {
                     filteredManufacturers.map((item) => (
                       <Combobox.Option
@@ -56,7 +56,7 @@ const SearchManufacturer = ({manufacturer, setManufacturer} : SearchManufacturer
                             </span>
                             {selected ? (
                               <span className={`aboslute inset-y-0 left-0 flex items-center pl-3 ${active ? 'text-white' : 'text-teal-600'}`}>
-
+                                  
                               </span>
                             ) : null
                             }
