@@ -39,3 +39,11 @@ export interface CarCardProps {
 	drive: string
 	cityMPG: number
 }
+
+export interface searchProps {
+	manufacturer: string
+	year: number
+	fuel: string
+	limit: number
+	model: string
+}
