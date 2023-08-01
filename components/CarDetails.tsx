@@ -102,7 +102,7 @@ const CarDetails = ({isOpen,closeModal: closeModal,car}: CarDetailsProps)  => {
                                                 key={key}
                                             >
                                                 <h4 className='text-gray-500 capitalize'>{key.split("_").join(" ")}</h4>
-                                                <p className='font-semibold text-black-100'>{value}</p>
+                                                <p className='font-semibold text-black-100 capitalize'>{value}</p>
                                             </div>
                                         ))}
                                     </div>
