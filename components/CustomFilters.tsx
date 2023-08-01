@@ -4,14 +4,20 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { Listbox, Transition } from '@headlessui/react'
 import { filterProps } from '@types'
+import { updateSearchParams } from '@utlis'
 
 const CustomFilters = ({title, options} : filterProps) => {
   const [selected, setSelected] = useState(options[0])
+  let router = useRouter()
+  const handleUpdateParams = (e:{title : string, value:string})=>{
+    let newUrl = updateSearchParams(title.toLowerCase(), e.value.toLowerCase())
+    router.push(newUrl)
+  }
   return (
     <div className="w-fit mt-5 cursor-pointer">
       <Listbox
         value={selected}
-        onChange={(e)=>setSelected(e)}
+        onChange={(e)=>{setSelected(e); handleUpdateParams(e)}}
       >
         <div className="relative w-fit z-10 cursor-pointer">
           <Listbox.Button className={'custom-filter__btn'}>
@@ -34,7 +40,7 @@ const CustomFilters = ({title, options} : filterProps) => {
               className="custom-filter__options"
             >
             <Listbox.Option
-                value={{title: 'All'}}
+                value={{title: options[0].title, value: 'all'}}
                 className={({active})=>`relative cursor-pointer select-none py-2 px-4 ${active ? 'bg-primary-blue text-white': 'text-gray-900'}`}
               >
                 {({selected})=>(
