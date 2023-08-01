@@ -27,11 +27,11 @@ export default async function Home({searchParams}: {searchParams: {manufacturer:
             <Searchbar/>
             <div className="home__filter-container">
               <CustomFilters
-                title={'Fuel Type'}
+                title={'fuel'}
                 options={fuels}
               />
               <CustomFilters
-                title={'Year'}
+                title={'year'}
                 options={yearsOfProduction}
               />
             </div>
