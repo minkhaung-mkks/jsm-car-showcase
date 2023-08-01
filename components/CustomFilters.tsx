@@ -1,3 +1,4 @@
+'use client'
 import {useState,Fragment} from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
@@ -7,16 +8,16 @@ import { filterProps } from '@types'
 const CustomFilters = ({title, options} : filterProps) => {
   const [selected, setSelected] = useState(options[0])
   return (
-    <div className="w-fit">
+    <div className="w-fit mt-5 cursor-pointer">
       <Listbox
         value={selected}
         onChange={(e)=>setSelected(e)}
       >
-        <div className="relative w-fit z-10">
+        <div className="relative w-fit z-10 cursor-pointer">
           <Listbox.Button className={'custom-filter__btn'}>
             <span className='truncate block '>{selected.title}</span>
             <Image
-              src='/chevron-up-down.svh'
+              src='/chevron-up-down.svg'
               alt='Chervon Up Down'
               width={20}
               height={20}
@@ -33,8 +34,8 @@ const CustomFilters = ({title, options} : filterProps) => {
               className="custom-filter__options"
             >
             <Listbox.Option
-                value={'All'}
-                className={({active})=>`relative cursor-default select-none py-2 px-4 ${active ? 'bg-primary-blue text-white': 'text-gray-900'}`}
+                value={{title: 'All'}}
+                className={({active})=>`relative cursor-pointer select-none py-2 px-4 ${active ? 'bg-primary-blue text-white': 'text-gray-900'}`}
               >
                 {({selected})=>(
                   <span className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`}>
@@ -42,19 +43,24 @@ const CustomFilters = ({title, options} : filterProps) => {
                   </span>
                 )}
               </Listbox.Option>
-              {options.map((option)=>(
-                <Listbox.Option
-                  key={option.title}
-                  value={option}
-                  className={({active})=>`relative cursor-default select-none py-2 px-4 ${active ? 'bg-primary-blue text-white': 'text-gray-900'}`}
-                >
-                  {({selected})=>(
-                    <span className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`}>
-                      {option.title}
-                    </span>
-                  )}
-                </Listbox.Option>
-              ))}
+              {options.map((option,index )=>{
+                if(index > 0){
+                  return(
+                    <Listbox.Option
+                      key={option.title}
+                      value={option}
+                      className={({active})=>`relative cursor-pointer select-none py-2 px-4 ${active ? 'bg-primary-blue text-white': 'text-gray-900'}`}
+                    >
+                      {({selected})=>(
+                        <span className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`}>
+                          {option.title}
+                        </span>
+                      )}
+                    </Listbox.Option>
+                  )
+                }
+                
+            })}
             </Listbox.Options>
           </Transition>
         </div>
