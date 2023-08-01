@@ -47,3 +47,12 @@ export interface searchProps {
 	limit: number
 	model: string
 }
+
+export interface OptionProps {
+	title: string
+	value: string
+}
+export interface filterProps {
+	title: string
+	options: OptionProps[]
+}
