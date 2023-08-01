@@ -26,3 +26,13 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
 
 	return rentalRatePerDay.toFixed(0)
 }
+export const updateSearchParams = (type: string, value: string) => {
+	const searchParams = new URLSearchParams(window.location.search)
+	if (value === "all") {
+		searchParams.delete(type)
+	} else {
+		searchParams.set(type, value)
+	}
+	const newUrl = `${window.location.pathname}?${searchParams.toString()}`
+	return newUrl
+}
